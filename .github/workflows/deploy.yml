@@ -28,16 +28,6 @@ jobs:
 
     - name: Initialized Terraform
       run: terraform init
-    
-    - name: Import s3 bucket
-      run: |
-        terraform state list | grep module.s3.aws_s3_bucket.this || \
-        terraform import module.s3.aws_s3_bucket.this "funky-qr-lambda-backend-s3" || true
-    
-    - name: Import dynamodb
-      run: | 
-        terraform state list | grep module.dynamodb.aws_dynamodb_table.this || \
-        terraform import module.dynamodb.aws_dynamodb_table.this "funky-qr-state-locking-db" || true
 
     - name: Check terraform plan
       if: startsWith(github.ref, 'refs/heads/')
