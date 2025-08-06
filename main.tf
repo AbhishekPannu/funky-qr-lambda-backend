@@ -11,24 +11,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = "funky-qr-lambda-backend"
-  acl    = "private"
+module "s3" {
+  source = "./module/s3"
+  bucket_name = "funky-qr-lambda-backend-s3"
 }
 
-resource "aws_s3_bucket_versioning" "my_s3_bucket_versioning" {
-  bucket = aws_s3_bucket.my_s3_bucket.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-resource "aws_dynamodb_table" "terraform_state_locking" {
-  name         = "funky-qr-state-locking"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
+module "dynamodb" {
+  source = "./module/dtnamodb"
+  bucket_name = "funky-qr-state-locking-db"
 }
