@@ -17,9 +17,6 @@ resource "aws_s3_bucket" "my_s3_bucket" {
         enabled = true
     }
     acl = "private"
-    tags {
-        Name = "Terraform State Bucket"
-    }
 }
 
 resource "aws_dynamodb_table" "terraform_state_locking" {
@@ -29,8 +26,5 @@ resource "aws_dynamodb_table" "terraform_state_locking" {
     attribute {
         name = "LockID"
         type = "S"
-    }
-    tags {
-        Name = "Terraform State Locking Table"
     }
 }
