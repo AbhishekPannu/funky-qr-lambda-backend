@@ -12,11 +12,11 @@ provider "aws" {
 }
 
 module "s3" {
-  source = "./module/s3"
+  source = "./modules/s3"
   bucket_name = "funky-qr-lambda-backend-s3"
 }
 
 module "dynamodb" {
-  source = "./module/dtnamodb"
+  source = "./modules/dtnamodb"
   bucket_name = "funky-qr-state-locking-db"
 }
