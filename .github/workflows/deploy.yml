@@ -29,6 +29,12 @@ jobs:
     - name: Initialized Terraform
       run: terraform init
     
+    - name: Import s3 bucket
+      run: terraform import module.s3.aws_s3_bucket.tf_state_bucket "funky-qr-lambda-backend-s3"
+    
+    - name: Import dynamodb
+      run: terraform import module.dynamodb.aws_dynamodb_table.tf_state_lock "funky-qr-state-locking-db"
+
     - name: Check terraform plan
       if: startsWith(github.ref, 'refs/heads/')
       run: terraform plan
