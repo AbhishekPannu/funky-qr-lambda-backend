@@ -25,3 +25,12 @@ Note: This workflow uses temporary state file, need to drop both s3 bucket and d
 
 ## 📁 Project Structure
 
+├── .github/
+│ └── workflows/
+│ └── deploy.yml # GitHub Actions CI/CD pipeline
+├── modules/
+│ ├── s3/ # s3 backend definition module
+│ └── dynamodb/ # dynamodb state locking table module
+├── main.tf # Main Terraform configuration
+├── outputs.tf # Output values
+├── README.md # Project documentation
