@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "my_s3_bucket" {
 
 resource "aws_dynamodb_table" "terraform_state_locking" {
     name = "funky-qr-state-locking"
-    billing_mode = "PAY_PER_REQUESt"
+    billing_mode = "PAY_PER_REQUEST"
     hash_key = "LockID"
     attribute {
         name = "LockID"
