@@ -2,7 +2,8 @@ name: Deployment of Lambda state backend
 
 on:
   push:
-    tags: "v*"
+    branches: [main]
+    tags: ['v*']
 
 permissions:
   id-token: write
@@ -28,5 +29,10 @@ jobs:
     - name: Initialized Terraform
       run: terraform init
     
+    - name: Check terraform plan
+      if: startsWith(github.ref, 'refs/heads/')
+      run: terraform plan
+    
     - name: Apply terraform changes
+      if: startsWith(github.ref, 'refs/tags/')
       run: terraform apply -auto-approve
