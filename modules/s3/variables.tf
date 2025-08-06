@@ -1,4 +1,4 @@
 variable "bucket_name" {
-    value = string
+    type = string
     description = "Name of the Bucket table"
 }

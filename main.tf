@@ -17,6 +17,6 @@ module "s3" {
 }
 
 module "dynamodb" {
-  source = "./modules/dtnamodb"
+  source = "./modules/dynamodb"
   bucket_name = "funky-qr-state-locking-db"
 }
