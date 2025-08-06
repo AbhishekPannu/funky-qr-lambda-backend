@@ -19,6 +19,8 @@ A GitHub Actions workflow is defined using YAML under `.github/workflows/`. It h
 - Planning and applying infrastructure
 - Authenticating securely using AWS OIDC
 
+Note: This workflow uses temporary state file, need to drop both s3 bucket and dynamodb table before running the workflow
+
 ---
 
 ## 📁 Project Structure
