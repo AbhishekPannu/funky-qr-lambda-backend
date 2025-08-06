@@ -30,7 +30,13 @@ Note: This workflow uses temporary state file, need to drop both s3 bucket and d
     - deploy.yml # GitHub Actions CI/CD pipeline
 - modules
   - s3/ # s3 backend definition module
+    - s3.tf
+    - outputs.tf
+    - variables.tf
   - dynamodb/ # dynamodb state locking table module
+    - dynamodb.tf
+    - outputs.tf
+    - variables.tf
 - main.tf # Main Terraform configuration
-- output.tf # Output values
+- outputs.tf # Output values
 - README.md # Project documentation
