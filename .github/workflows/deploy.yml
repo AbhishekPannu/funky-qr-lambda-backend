@@ -2,7 +2,7 @@ name: Deployment of Lambda state backend
 
 on:
   push:
-    branches: [main]
+    tags: "v*"
 
 permissions:
   id-token: write
