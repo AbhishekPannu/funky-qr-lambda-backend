@@ -13,10 +13,14 @@ provider "aws" {
 
 resource "aws_s3_bucket" "my_s3_bucket" {
   bucket = "funky-qr-lambda-backend"
-  versioning {
-    enabled = true
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_versioning" "my_s3_bucket_versioning" {
+  bucket = aws_s3_bucket.my_s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
-  acl = "private"
 }
 
 resource "aws_dynamodb_table" "terraform_state_locking" {
